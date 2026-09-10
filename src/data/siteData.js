@@ -1,190 +1,50 @@
-import {
-  BadgeCheck,
-  BatteryCharging,
-  Bolt,
-  Building2,
-  CalendarClock,
-  CheckCircle2,
-  Clock3,
-  Factory,
-  Gauge,
-  HeartHandshake,
-  Home,
-  Lightbulb,
-  ShieldCheck,
-  Sparkles,
-  Wrench,
-  Zap,
-} from 'lucide-react';
+import { Bolt, Building2, Cable, Fan, Gauge, Lightbulb, SearchCheck, ShowerHead, SlidersHorizontal } from 'lucide-react';
 
 export const siteConfig = {
-  brand: 'Voltwise',
-  brandSuffix: 'Electrical',
-  strapline: 'Reliable power. Properly done.',
-  phoneDisplay: '020 7946 0123',
-  phoneHref: '+442079460123',
-  email: 'hello@yourcompany.co.uk',
-  serviceArea: 'London & surrounding areas',
-  formEndpoint: '', // Add Formspree / custom API endpoint to enable live submissions.
-  heroImage: '/src/assets/voltwise-hero.webp',
-  aboutImage: '/src/assets/voltwise-testing.webp',
+  brand: 'Premier Electrics', brandSuffix: 'N W Ltd', strapline: 'Electrical work done properly.',
+  phoneDisplay: '[PHONE NUMBER]', phoneHref: '', email: '', serviceArea: 'Cheadle, Stockport & surrounding areas',
+  companyNumber: '07458987', formEndpoint: '', heroImage: '/src/assets/voltwise-hero.webp', aboutImage: '/src/assets/voltwise-testing.webp',
 };
 
 export const navigation = [
-  { label: 'Home', href: '#home' },
-  { label: 'Services', href: '#services' },
-  { label: 'About', href: '#about' },
-  { label: 'Reviews', href: '#reviews' },
-  { label: 'FAQs', href: '#faqs' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/' }, { label: 'Services', href: '/services' }, { label: 'About', href: '/about' },
+  { label: 'Areas', href: '/areas' }, { label: 'Contact', href: '/contact' },
 ];
 
-export const valueProps = [
-  {
-    icon: BadgeCheck,
-    title: 'Qualified electricians',
-    text: 'Clear scopes of work, tidy installations and safety-led workmanship.',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Fully insured',
-    text: 'Built to present your real insurance and scheme credentials with confidence.',
-  },
-  {
-    icon: Clock3,
-    title: 'Reliable attendance',
-    text: 'Simple booking, arrival updates and practical time windows for customers.',
-  },
-  {
-    icon: HeartHandshake,
-    title: 'Workmanship focused',
-    text: 'Respectful service for homes, landlords, offices and commercial sites.',
-  },
-];
+export const pageMeta = {
+  '/': { title: 'Premier Electrics N W Ltd | Electricians in Cheadle & Stockport', description: 'Reliable domestic and commercial electricians serving Cheadle, Stockport and surrounding areas. Electrical installations, repairs, testing, rewires and more. Get a free quote.' },
+  '/services': { title: 'Electrical Services | Premier Electrics N W Ltd', description: 'Domestic and commercial electrical services in Cheadle and Stockport. Rewires, consumer units, sockets, lighting, electrical testing, repairs and installations.' },
+  '/about': { title: 'About Premier Electrics N W Ltd | Local Electricians', description: 'Learn about Premier Electrics N W Ltd, an established electrical company serving Cheadle, Stockport and surrounding areas.' },
+  '/areas': { title: 'Electricians in Cheadle, Stockport & Surrounding Areas', description: 'Premier Electrics N W Ltd provides electrical services across Cheadle, Cheadle Hulme, Stockport and surrounding areas. Contact us for a free estimate.' },
+  '/contact': { title: 'Contact Premier Electrics N W Ltd | Get a Free Electrical Quote', description: 'Contact Premier Electrics N W Ltd for electrical work in Cheadle, Stockport and surrounding areas. Call us or request a free estimate online.' },
+};
 
 export const services = [
-  {
-    icon: Home,
-    title: 'Domestic electrical work',
-    text: 'Sockets, lighting, fault finding, consumer unit upgrades and home improvements.',
-    tag: 'Homes',
-  },
-  {
-    icon: Building2,
-    title: 'Commercial electrics',
-    text: 'Reliable installations and maintenance for offices, retail and managed properties.',
-    tag: 'Business',
-  },
-  {
-    icon: Gauge,
-    title: 'EICR & testing',
-    text: 'Electrical inspections, condition reporting and remedial work for safer properties.',
-    tag: 'Compliance',
-  },
-  {
-    icon: BatteryCharging,
-    title: 'EV charger installation',
-    text: 'Smart EV charging solutions for driveways, workplaces and managed car parks.',
-    tag: 'EV',
-  },
-  {
-    icon: Lightbulb,
-    title: 'Lighting upgrades',
-    text: 'Efficient indoor, outdoor, security and feature lighting with modern controls.',
-    tag: 'Lighting',
-  },
-  {
-    icon: CalendarClock,
-    title: 'Emergency call-outs',
-    text: 'Fast response for urgent electrical faults, loss of power and safety concerns.',
-    tag: 'Urgent',
-  },
+  { icon: Bolt, title: 'Electrical Repairs', text: 'Faults, damaged accessories, electrical problems and general repairs.', tag: 'Repairs' },
+  { icon: SlidersHorizontal, title: 'Consumer Units', text: 'Consumer unit replacements and upgrades to improve the safety of your electrical installation.', tag: 'Safety' },
+  { icon: Cable, title: 'Rewiring', text: 'Full and partial rewires for houses, renovations and other properties.', tag: 'Installation' },
+  { icon: Lightbulb, title: 'Sockets & Lighting', text: 'New sockets, switches, indoor lighting, outdoor lighting and electrical alterations.', tag: 'Improvements' },
+  { icon: Gauge, title: 'Electrical Testing', text: 'Electrical inspections and testing for homeowners, landlords and businesses.', tag: 'Testing' },
+  { icon: Building2, title: 'Commercial Electrical Work', text: 'Reliable electrical installation, maintenance and repair work for local businesses.', tag: 'Commercial' },
 ];
 
-export const process = [
-  {
-    number: '01',
-    title: 'Tell us what you need',
-    text: 'Share the issue, property type and postcode. Photos help us scope faster.',
-  },
-  {
-    number: '02',
-    title: 'Get a clear quote',
-    text: 'We outline the work, likely timescale and pricing before anything starts.',
-  },
-  {
-    number: '03',
-    title: 'Book a convenient slot',
-    text: 'Choose a suitable visit window and receive confirmation before arrival.',
-  },
-  {
-    number: '04',
-    title: 'Work completed & checked',
-    text: 'The installation is tested, the area is left tidy and next steps are explained.',
-  },
-];
-
-export const stats = [
-  { value: 12, suffix: '+', label: 'Years combined experience' },
-  { value: 2500, suffix: '+', label: 'Jobs completed' },
-  { value: 4.9, decimals: 1, suffix: '/5', label: 'Average customer rating' },
-  { value: 24, suffix: 'h', label: 'Priority response option' },
+export const serviceDetails = [
+  { icon: SlidersHorizontal, title: 'Consumer Unit Replacements & Upgrades', paragraphs: ['Your consumer unit plays a central role in protecting your electrical installation.', 'We can inspect existing consumer units and carry out replacements or upgrades where required.'], lead: 'Contact us if:', items: ['Your consumer unit is old or outdated', 'You are renovating a property', 'You are experiencing recurring electrical problems', 'An inspection has recommended remedial work', 'You want your installation assessed'] },
+  { icon: Cable, title: 'Full & Partial Rewires', paragraphs: ['Older electrical installations may eventually need significant upgrading or rewiring.', 'Every property is different, so contact us to arrange an assessment and quotation.'], lead: 'We undertake full and partial rewires for:', items: ['Houses', 'Flats', 'Renovations', 'Extensions', 'Rental properties', 'Commercial premises'] },
+  { icon: Bolt, title: 'Sockets, Switches & Electrical Accessories', paragraphs: ['Need more sockets or want to replace older electrical accessories?'], lead: 'We can install and replace:', items: ['Standard sockets', 'USB sockets', 'Switches', 'Fused spurs', 'Outdoor sockets', 'Electrical accessories', 'Additional power points'] },
+  { icon: Lightbulb, title: 'Indoor & Outdoor Lighting', paragraphs: ['Lighting can completely change the practicality and appearance of a property.'], lead: 'We install and replace:', items: ['Ceiling lights', 'Spotlights', 'LED lighting', 'Outdoor lighting', 'Security lighting', 'Garden lighting', 'Replacement fittings', 'Lighting controls'] },
+  { icon: SearchCheck, title: 'Electrical Fault Finding & Repairs', paragraphs: ['Electrical faults can be frustrating and sometimes difficult to trace.', 'If you are concerned about an electrical problem, contact us and explain what is happening.'], lead: 'We can investigate problems such as:', items: ['Circuits tripping', 'Sockets not working', 'Lighting faults', 'Intermittent electrical problems', 'Damaged accessories', 'Electrical equipment causing faults'] },
+  { icon: Gauge, title: 'Electrical Testing & Inspections', paragraphs: ['Electrical testing helps establish whether an installation is safe and identify areas requiring attention.', 'Ask us about the appropriate electrical inspection or certification for your situation.'], lead: 'Testing may be useful for:', items: ['Homeowners', 'Landlords', 'Property buyers', 'Property sellers', 'Businesses', 'Older electrical installations'] },
+  { icon: Fan, title: 'Extractor Fans', paragraphs: ['We install and replace extractor fans for bathrooms, kitchens and other areas requiring improved ventilation.'] },
+  { icon: ShowerHead, title: 'Electric Showers', paragraphs: ['Electrical work associated with the installation and replacement of suitable electric showers and shower circuits.'] },
+  { icon: Building2, title: 'Commercial Electrical Services', paragraphs: ['We also undertake electrical work for local businesses and commercial properties.'], lead: 'Services can include:', items: ['Electrical repairs', 'Lighting installations', 'Additional sockets', 'Fault finding', 'Electrical alterations', 'Maintenance', 'Testing and inspection', 'Refurbishment electrical work'] },
 ];
 
 export const testimonials = [
-  {
-    quote:
-      'Clear communication from the first call, arrived when promised and left the job spotless. The quote matched the final invoice.',
-    name: 'Sophie M.',
-    meta: 'Homeowner · London',
-  },
-  {
-    quote:
-      'We use them for ongoing maintenance across several managed properties. Professional paperwork, sensible advice and dependable scheduling.',
-    name: 'Daniel R.',
-    meta: 'Property manager · Greater London',
-  },
-  {
-    quote:
-      'Our new lighting and EV charger were installed with minimal disruption. Everything was explained in plain English before handover.',
-    name: 'Amelia T.',
-    meta: 'Small business owner · London',
-  },
+  { quote: 'Excellent work from start to finish. Professional, reliable and left everything clean and tidy.' },
+  { quote: 'Quick response, explained everything clearly and completed the work exactly as agreed.' },
+  { quote: 'Would definitely recommend. Friendly, knowledgeable and very professional.' },
 ];
 
-export const faqs = [
-  {
-    question: 'What areas do you cover?',
-    answer:
-      'This demo is configured for London and surrounding areas. Change the serviceArea value in src/data/siteData.js to your actual town, county or service radius.',
-  },
-  {
-    question: 'Can customers request a quote online?',
-    answer:
-      'Yes. The quote form includes validation and a demo success state. Add your form or API endpoint to siteConfig.formEndpoint to make submissions live.',
-  },
-  {
-    question: 'Can I add NICEIC, NAPIT or other accreditation details?',
-    answer:
-      'Yes. Replace the generic trust messaging with the schemes and registration numbers your business actually holds. Do not display credentials you cannot substantiate.',
-  },
-  {
-    question: 'Is the website mobile friendly?',
-    answer:
-      'Yes. The layout, navigation, forms, cards, typography and tap targets are responsive, including a mobile call-to-action for fast enquiries.',
-  },
-  {
-    question: 'Does it support reduced motion?',
-    answer:
-      'Yes. Framer Motion animations respect the user’s reduced-motion preference, and the CSS disables non-essential transitions where appropriate.',
-  },
-];
-
-export const footerLinks = [
-  { label: 'Domestic electrics', href: '#services' },
-  { label: 'Commercial electrics', href: '#services' },
-  { label: 'EICR & testing', href: '#services' },
-  { label: 'EV chargers', href: '#services' },
-];
-
-export const decorativeIcons = [Bolt, Zap, Sparkles, Wrench, CheckCircle2, Factory];
+export const areas = ['Cheadle', 'Cheadle Hulme', 'Stockport', 'Bramhall', 'Gatley', 'Heald Green', 'Handforth', 'Wilmslow', 'Didsbury', 'Hazel Grove', 'Poynton', 'Manchester', 'South Manchester'];
+export const allServiceNames = ['Electrical repairs', 'Fault finding', 'Consumer unit replacements', 'Full and partial rewires', 'Electrical testing', 'Lighting', 'Additional sockets', 'Outdoor electrics', 'Extractor fans', 'Electric showers', 'Domestic electrical work', 'Commercial electrical work'];
