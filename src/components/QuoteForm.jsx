@@ -63,7 +63,7 @@ export default function QuoteForm({ compact = false }) {
         <span><Check size={22} /></span>
         <div>
           <strong>Request received</strong>
-          <p>{siteConfig.formEndpoint ? 'We’ll be in touch shortly.' : 'Demo mode is active. Add a form endpoint to send real enquiries.'}</p>
+          <p>We’ll be in touch shortly.</p>
         </div>
         <button type="button" className="text-button" onClick={() => setState('idle')}>Send another</button>
       </motion.div>

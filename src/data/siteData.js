@@ -21,13 +21,13 @@ export const siteConfig = {
   brand: 'Voltwise',
   brandSuffix: 'Electrical',
   strapline: 'Reliable power. Properly done.',
-  phoneDisplay: '020 7946 0123',
-  phoneHref: '+442079460123',
-  email: 'hello@yourcompany.co.uk',
+  phoneDisplay: '020 3880 2140',
+  phoneHref: '+442038802140',
+  email: 'hello@voltwise.co.uk',
   serviceArea: 'London & surrounding areas',
-  formEndpoint: '', // Add Formspree / custom API endpoint to enable live submissions.
-  heroImage: '/src/assets/voltwise-hero.webp',
-  aboutImage: '/src/assets/voltwise-testing.webp',
+  formEndpoint: '', // Leave blank for demo success state; set to Formspree/API when going live.
+  heroImage: '/voltwise-hero.webp',
+  aboutImage: '/voltwise-testing.webp',
 };
 
 export const navigation = [
@@ -43,22 +43,22 @@ export const valueProps = [
   {
     icon: BadgeCheck,
     title: 'Qualified electricians',
-    text: 'Clear scopes of work, tidy installations and safety-led workmanship.',
+    text: 'Clear scopes, tidy installs, and safety checks explained before we leave.',
   },
   {
     icon: ShieldCheck,
     title: 'Fully insured',
-    text: 'Built to present your real insurance and scheme credentials with confidence.',
+    text: 'Public liability cover and scheme-registered engineers on every job.',
   },
   {
     icon: Clock3,
-    title: 'Reliable attendance',
-    text: 'Simple booking, arrival updates and practical time windows for customers.',
+    title: 'We show up',
+    text: 'Sensible time windows, a heads-up before we arrive, and no runaround.',
   },
   {
     icon: HeartHandshake,
-    title: 'Workmanship focused',
-    text: 'Respectful service for homes, landlords, offices and commercial sites.',
+    title: 'Respect for your place',
+    text: 'Homes, landlords, offices and sites — careful work and a clean handover.',
   },
 ];
 
@@ -156,27 +156,27 @@ export const faqs = [
   {
     question: 'What areas do you cover?',
     answer:
-      'This demo is configured for London and surrounding areas. Change the serviceArea value in src/data/siteData.js to your actual town, county or service radius.',
+      'We cover London and surrounding areas. If you’re just outside our usual radius, call us — we’ll tell you straight away whether we can help.',
   },
   {
-    question: 'Can customers request a quote online?',
+    question: 'Can I request a quote online?',
     answer:
-      'Yes. The quote form includes validation and a demo success state. Add your form or API endpoint to siteConfig.formEndpoint to make submissions live.',
+      'Yes. Use the quote form on this page with a short description of the job and your postcode. We’ll get back to you with a clear scope and price — or call us if it’s urgent.',
   },
   {
-    question: 'Can I add NICEIC, NAPIT or other accreditation details?',
+    question: 'Are you qualified and insured?',
     answer:
-      'Yes. Replace the generic trust messaging with the schemes and registration numbers your business actually holds. Do not display credentials you cannot substantiate.',
+      'Yes. Our electricians are fully qualified and we carry public liability insurance. Ask for scheme details when you get in touch and we’ll share what’s relevant to your job.',
   },
   {
-    question: 'Is the website mobile friendly?',
+    question: 'Do you do emergency call-outs?',
     answer:
-      'Yes. The layout, navigation, forms, cards, typography and tap targets are responsive, including a mobile call-to-action for fast enquiries.',
+      'Yes for urgent faults, loss of power and safety concerns. Call the number on this page and we’ll advise on timing and next steps.',
   },
   {
-    question: 'Does it support reduced motion?',
+    question: 'Will you leave a tidy finish?',
     answer:
-      'Yes. Framer Motion animations respect the user’s reduced-motion preference, and the CSS disables non-essential transitions where appropriate.',
+      'That’s part of the job. We protect floors and furniture, clear as we go, and explain testing and handover before we leave.',
   },
 ];
 

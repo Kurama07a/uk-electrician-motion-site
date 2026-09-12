@@ -37,13 +37,30 @@ const reveal = {
   visible: { opacity: 1, y: 0 },
 };
 
+function usePitchMode() {
+  const [pitch, setPitch] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    const params = new URLSearchParams(window.location.search);
+    return params.get('pitch') === '1' || params.has('pitch');
+  });
+  useEffect(() => {
+    const sync = () => {
+      const params = new URLSearchParams(window.location.search);
+      setPitch(params.get('pitch') === '1' || params.has('pitch'));
+    };
+    window.addEventListener('popstate', sync);
+    return () => window.removeEventListener('popstate', sync);
+  }, []);
+  return pitch;
+}
+
 const themes = [
   { id: 'amber', label: 'Safety amber', color: '#ffb000' },
   { id: 'blue', label: 'Electric blue', color: '#2864ff' },
   { id: 'lime', label: 'Signal lime', color: '#b7d70d' },
 ];
 
-function ThemePicker() {
+function ThemePicker({ hidden = false }) {
   const [open, setOpen] = useState(false);
   const [theme, setTheme] = useState(() => localStorage.getItem('voltwise-theme') || 'amber');
 
@@ -60,6 +77,8 @@ function ThemePicker() {
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
   }, []);
+
+  if (hidden) return null;
 
   return (
     <div className="theme-picker">
@@ -84,7 +103,7 @@ function ThemePicker() {
   );
 }
 
-function Header() {
+function Header({ pitch = false }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const reduceMotion = useReducedMotion();
@@ -109,12 +128,12 @@ function Header() {
           {navigation.map((item) => <a key={item.label} href={item.href}>{item.label}</a>)}
         </nav>
         <div className="header-actions">
-          <ThemePicker />
+          <ThemePicker hidden={pitch} />
           <a className="header-phone" href={`tel:${siteConfig.phoneHref}`}>
             <span><Phone size={17} /></span>
             <div><small>Call now</small><strong>{siteConfig.phoneDisplay}</strong></div>
           </a>
-          <a className="button button--primary button--small desktop-quote" href="#contact">Get a quote <ArrowRight size={16} /></a>
+          <a className="button button--primary button--small desktop-quote" href={pitch ? "#quote" : "#contact"}>Get a quote <ArrowRight size={16} /></a>
           <button className="menu-toggle" type="button" aria-label="Open navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen(true)}>
             <Menu size={23} />
           </button>
@@ -154,7 +173,7 @@ function Hero() {
           <h1>Expert electrical work for <span>homes</span> & businesses.</h1>
           <p className="hero__lead">Qualified electricians for installations, repairs, testing and upgrades — with clear communication from quote to completion.</p>
           <div className="hero__actions">
-            <a className="button button--primary" href="#contact">Get a free quote <ArrowRight size={17} /></a>
+            <a className="button button--primary" href="#quote">Get a free quote <ArrowRight size={17} /></a>
             <a className="button button--ghost" href={`tel:${siteConfig.phoneHref}`}><Phone size={17} /> Call {siteConfig.phoneDisplay}</a>
           </div>
           <div className="hero__proof">
@@ -170,7 +189,7 @@ function Hero() {
         </div>
       </div>
 
-      <motion.div className="container hero-form-wrap" initial={reduceMotion ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.6 }}>
+      <motion.div className="container hero-form-wrap" id="quote" initial={reduceMotion ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.6 }}>
         <div className="hero-form-card">
           <div className="hero-form-card__label"><Zap size={19} /><div><strong>Quick consultation</strong><span>Tell us about your job</span></div></div>
           <QuoteForm compact />
@@ -327,7 +346,7 @@ function FAQ() {
   return (
     <section className="section section--soft" id="faqs">
       <div className="container faq-grid">
-        <div className="faq-intro"><SectionHeading eyebrow="Common questions" align="left" title={<>Everything customers usually <span className="accent-text">ask first.</span></>} text="The FAQ content is data-driven, so it can double as practical local SEO content once tailored to your business." /><a className="button button--outline" href="#contact">Ask a question <ArrowRight size={17} /></a></div>
+        <div className="faq-intro"><SectionHeading eyebrow="Common questions" align="left" title={<>Everything customers usually <span className="accent-text">ask first.</span></>} text="Straight answers on coverage, quotes, qualifications and what to expect on the day." /><a className="button button--outline" href="#contact">Ask a question <ArrowRight size={17} /></a></div>
         <div className="faq-list">
           {faqs.map((faq, index) => {
             const isOpen = open === index;
@@ -366,33 +385,39 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="container footer-grid">
-        <div className="footer-brand"><Logo light /><p>A flexible UK electrician website starter for domestic and commercial electrical contractors.</p><a href={`tel:${siteConfig.phoneHref}`}><Phone size={17} /> {siteConfig.phoneDisplay}</a></div>
+        <div className="footer-brand"><Logo light /><p>Qualified electricians for homes and businesses — clear quotes, tidy workmanship, and plain-English advice from first call to handover.</p><a href={`tel:${siteConfig.phoneHref}`}><Phone size={17} /> {siteConfig.phoneDisplay}</a></div>
         <div><h3>Services</h3>{footerLinks.map((link) => <a key={link.label} href={link.href}>{link.label}</a>)}</div>
         <div><h3>Company</h3>{navigation.slice(1).map((link) => <a key={link.label} href={link.href}>{link.label}</a>)}</div>
         <div><h3>Coverage</h3><p>{siteConfig.serviceArea}</p><p>Mon–Fri: 08:00–18:00<br />Priority call-outs available</p></div>
       </div>
-      <div className="container footer-bottom"><span>© {new Date().getFullYear()} {siteConfig.brand} {siteConfig.brandSuffix}. All rights reserved.</span><span>Template: replace demo claims, credentials and contact details before launch.</span></div>
+      <div className="container footer-bottom"><span>© {new Date().getFullYear()} {siteConfig.brand} {siteConfig.brandSuffix}. All rights reserved.</span><span>Reliable power. Properly done.</span></div>
     </footer>
   );
 }
 
 export default function App() {
+  const pitch = usePitchMode();
+
   return (
     <>
-      <Header />
+      <Header pitch={pitch} />
       <main>
         <Hero />
         <TrustStrip />
-        <Values />
-        <About />
-        <Services />
-        <Process />
-        <Stats />
-        <Testimonials />
-        <FAQ />
-        <Contact />
+        {!pitch && (
+          <>
+            <Values />
+            <About />
+            <Services />
+            <Process />
+            <Stats />
+            <Testimonials />
+            <FAQ />
+            <Contact />
+          </>
+        )}
       </main>
-      <Footer />
+      {!pitch && <Footer />}
       <a className="mobile-call" href={`tel:${siteConfig.phoneHref}`} aria-label={`Call ${siteConfig.phoneDisplay}`}><Phone size={18} /><span>Call now</span></a>
     </>
   );
